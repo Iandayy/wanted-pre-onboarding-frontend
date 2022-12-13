@@ -10,19 +10,28 @@ const Header = () => {
 
   return (
     <header className="flex justify-between items-center m-5">
-      <p className="text-3xl font-bold text-[#22223b] italic cursor-pointer">
-        Todo List
-      </p>
       {!token && (
-        <section>
-          <Rink className="pr-2" to="/signin" str="Sign In" />
-          <Rink to="/signup" str="Sign Up" />
-        </section>
+        <>
+          <Rink
+            className="text-3xl font-bold text-[#22223b] italic cursor-pointer"
+            to="/"
+            str="Todo List"
+          />
+          <section>
+            <Rink className="pr-2" to="/signin" str="Sign In" />
+            <Rink to="/signup" str="Sign Up" />
+          </section>
+        </>
       )}
       {token && (
-        <section>
-          <Rink str="Sign Out" to="/" onClick={signoutHandler} />
-        </section>
+        <>
+          <p className="text-3xl font-bold text-[#22223b] italic cursor-pointer">
+            Todo List
+          </p>
+          <section>
+            <Rink str="Sign Out" to="/" onClick={signoutHandler} />
+          </section>
+        </>
       )}
     </header>
   );
