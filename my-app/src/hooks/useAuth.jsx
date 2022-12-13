@@ -73,6 +73,19 @@ const useAuth = (props) => {
       }
     } catch (err) {
       console.log("err", err);
+
+      if (props.path === "signup") {
+        alert("This email is in use. Please use a different email.");
+        return;
+      }
+      if (props.path === "signin") {
+        if (err.response.statusText === "Not Found") {
+          alert("Please check your email.");
+        }
+        if (err.response.statusText === "Unauthorized") {
+          alert("Please check your password.");
+        }
+      }
     }
   };
 
