@@ -1,4 +1,4 @@
-const EditTodo = ({ items, setEditValue, setIsChecked }) => {
+const EditTodo = ({ items, setEditValue, setIsChecked, editInputRef }) => {
   const editValueChangeHandler = (e) => {
     setEditValue(e.target.value);
   };
@@ -6,12 +6,14 @@ const EditTodo = ({ items, setEditValue, setIsChecked }) => {
   const isCheckedChangeHandler = () => {
     setIsChecked((prev) => !prev);
   };
+
   return (
-    <>
+    <div className="flex w-full p-2">
       <input
         id="todo"
         type="text"
         name="todo"
+        ref={editInputRef}
         defaultValue={items.todo}
         onChange={editValueChangeHandler}
         className="p-2 w-full border-2 rounded-md"
@@ -20,11 +22,11 @@ const EditTodo = ({ items, setEditValue, setIsChecked }) => {
         id="isCompleted"
         type="checkbox"
         name="isCompleted"
-        defaultValue={items.isCompleted}
+        defaultChecked={items.isCompleted}
         onChange={isCheckedChangeHandler}
         className="ml-1"
       />
-    </>
+    </div>
   );
 };
 

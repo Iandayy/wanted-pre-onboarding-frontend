@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import instance from "../service/request";
 
 import Button from "../components/Button";
@@ -97,10 +96,12 @@ const useAuth = (props) => {
             value={inputValue.email}
             onChange={inputValueChangeHandler}
             onBlur={inputValueBlurHandler}
-            className="text-center w-48 p-1 border-2 rounded-md "
+            className="text-center p-1 border-2 rounded-md "
           />
           {emailError && (
-            <p className="text-purple-300">Please include '@' in your email.</p>
+            <p className="text-purple-300 mt-2">
+              Please include '@' in your email.
+            </p>
           )}
         </section>
         <section className="flex flex-col items-center text-center mb-10">
@@ -115,10 +116,10 @@ const useAuth = (props) => {
             value={inputValue.password}
             onChange={inputValueChangeHandler}
             onBlur={inputValueBlurHandler}
-            className="text-center w-48 p-1 border-2 rounded-md"
+            className="text-center p-1 border-2 rounded-md"
           />
           {passwordError && (
-            <p className="text-purple-300">
+            <p className="text-purple-300 mt-2">
               Please write at least 8 characters in your password.
             </p>
           )}
