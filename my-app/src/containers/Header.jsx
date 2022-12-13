@@ -11,13 +11,13 @@ const Header = () => {
         str="Todo List"
       />
       {!token && (
-        <section className="">
+        <section>
           <Rink className="pr-2" to="/signin" str="Sign In" />
           <Rink to="/signup" str="Sign Up" />
         </section>
       )}
       {token && (
-        <section className="">
+        <section>
           <Rink className="pr-2" str="My Page" />
           <Rink str="Sign Out" />
         </section>

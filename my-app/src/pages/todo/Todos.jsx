@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import instance from "../../service/request";
 
 import NewTodo from "./NewTodo";
@@ -7,6 +6,7 @@ import TodoItem from "./TodoItem";
 
 const Todos = () => {
   const token = window.localStorage.getItem("JWT");
+  if (!token) window.location.replace("/");
 
   const [todos, setTodos] = useState([]);
 
@@ -19,6 +19,7 @@ const Todos = () => {
     };
     getTodos();
   }, [token]);
+
   return (
     <div className="flex flex-col justify-center itmes-center mt-10 sm:mx-12 md:mx-24 lg:mx-36">
       <NewTodo token={token} />

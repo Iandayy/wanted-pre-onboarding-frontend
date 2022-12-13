@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import instance from "../../service/request";
 
 import Button from "../../components/Button";
@@ -7,8 +7,10 @@ import EditTodo from "./EditTodo";
 
 const TodoItem = ({ token, items }) => {
   const [isEdit, setIsEdit] = useState(false);
-  const [editValue, setEditValue] = useState("");
+  const [editValue, setEditValue] = useState(items.todo);
   const [isChecked, setIsChecked] = useState(items.isCompleted);
+
+  const editInputRef = useRef();
 
   const editHandler = () => {
     setIsEdit(true);
@@ -19,7 +21,14 @@ const TodoItem = ({ token, items }) => {
   };
 
   const completeHandler = async () => {
-    const item = { todo: editValue, isCompleted: items.isCompleted };
+    const item = { todo: editValue, isCompleted: isChecked };
+
+    if (editValue.length < 1) {
+      editInputRef.current.focus();
+      alert("Please write at least 1 character.");
+      return;
+    }
+
     await instance.put(`/todos/${items.id}`, item, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -31,24 +40,25 @@ const TodoItem = ({ token, items }) => {
     window.location.replace("/todos");
   };
 
-  console.log(isChecked);
+  console.log(editValue);
 
   return (
-    <section className="flex justify-between items-center sm:flex-col rounded bg-slate-50 hover:bg-slate-100 mb-3 px-4 py-2 shadow">
+    <div className="flex justify-between items-center sm:flex-col rounded bg-slate-50 hover:bg-slate-100 mb-3 px-2 py-2 shadow">
       {!isEdit && (
         <>
           <ul className="flex sm:justify-center p-2 w-3/4 lg:w-4/5">
-            <li className="mr-2 break-all">{items.todo}</li>
+            <li className="mr-2 break-words">{items.todo}</li>
             <input
               name="isCompleted"
               type="checkbox"
-              defaultChecked={isChecked}
+              checked={isChecked}
+              readOnly
             />
           </ul>
-          <div>
+          <section>
             <Button str="Update" onClick={editHandler} className="mx-1" />
             <DeleteTodo id={items.id} />
-          </div>
+          </section>
         </>
       )}
       {isEdit && (
@@ -57,14 +67,15 @@ const TodoItem = ({ token, items }) => {
             items={items}
             setEditValue={setEditValue}
             setIsChecked={setIsChecked}
+            editInputRef={editInputRef}
           />
-          <div className="flex justify-end">
+          <section className="flex justify-end">
             <Button str="Cancel" onClick={cancelHandler} className="mx-1" />
             <Button str="Complete" onClick={completeHandler} />
-          </div>
+          </section>
         </>
       )}
-    </section>
+    </div>
   );
 };
 
