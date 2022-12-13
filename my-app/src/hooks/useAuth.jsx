@@ -53,11 +53,7 @@ const useAuth = (props) => {
     };
 
     try {
-      const res = await instance.post(`${props.url}`, items, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await instance.post(`${props.url}`, items);
       if (props.path === "signup") {
         setInputValue({
           email: "",
