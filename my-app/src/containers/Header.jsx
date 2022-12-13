@@ -5,7 +5,11 @@ const Header = () => {
 
   return (
     <header className="flex justify-between items-center m-5">
-      <Rink className="text-3xl text-purple-600" to="/" str="Todo List" />
+      <Rink
+        className="text-3xl font-bold text-[#22223b] italic"
+        to="/"
+        str="Todo List"
+      />
       {!token && (
         <section className="">
           <Rink className="pr-2" to="/signin" str="Sign In" />
