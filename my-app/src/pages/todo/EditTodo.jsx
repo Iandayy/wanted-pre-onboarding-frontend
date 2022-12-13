@@ -8,7 +8,7 @@ const EditTodo = ({ items, setEditValue, setIsChecked, editInputRef }) => {
   };
 
   return (
-    <div className="flex justify-center items-center w-full p-2">
+    <div className="flex items-center p-2 w-full">
       <input
         id="todo"
         type="text"
@@ -16,7 +16,7 @@ const EditTodo = ({ items, setEditValue, setIsChecked, editInputRef }) => {
         ref={editInputRef}
         defaultValue={items.todo}
         onChange={editValueChangeHandler}
-        className="p-2 w-full border-2 rounded-md"
+        className="w-full p-2 border-2 rounded-md"
       />
       <input
         id="isCompleted"
