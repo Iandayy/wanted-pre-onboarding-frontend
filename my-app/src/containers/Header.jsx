@@ -4,6 +4,7 @@ const Header = () => {
   const token = window.localStorage.getItem("JWT");
 
   const signoutHandler = () => {
+    alert("You are signed out.");
     window.localStorage.clear();
     window.location.replace("/");
   };
