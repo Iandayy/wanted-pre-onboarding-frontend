@@ -45,7 +45,7 @@ const TodoItem = ({ token, items }) => {
     <div className="flex justify-between items-center sm:flex-col rounded bg-slate-50 hover:bg-slate-100 mb-3 px-2 py-2 shadow">
       {!isEdit && (
         <>
-          <ul className="flex sm:justify-center p-2 w-3/4 lg:w-4/5">
+          <ul className="flex sm:justify-center items-center p-2 w-3/4 lg:w-4/5">
             <li className="mr-2 break-words">{items.todo}</li>
             <input
               name="isCompleted"
@@ -68,7 +68,7 @@ const TodoItem = ({ token, items }) => {
             setIsChecked={setIsChecked}
             editInputRef={editInputRef}
           />
-          <section className="flex justify-end">
+          <section>
             <Button str="Cancel" onClick={cancelHandler} className="mx-1" />
             <Button str="Complete" onClick={completeHandler} />
           </section>
