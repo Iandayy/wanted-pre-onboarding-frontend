@@ -17,6 +17,8 @@ const TodoItem = ({ token, items }) => {
   };
 
   const cancelHandler = () => {
+    setEditValue(items.todo);
+    setIsChecked(items.isCompleted);
     setIsEdit(false);
   };
 
@@ -40,8 +42,6 @@ const TodoItem = ({ token, items }) => {
     window.location.replace("/todos");
   };
 
-  console.log(editValue);
-
   return (
     <div className="flex justify-between items-center sm:flex-col rounded bg-slate-50 hover:bg-slate-100 mb-3 px-2 py-2 shadow">
       {!isEdit && (
@@ -51,7 +51,7 @@ const TodoItem = ({ token, items }) => {
             <input
               name="isCompleted"
               type="checkbox"
-              checked={isChecked}
+              checked={items.isCompleted}
               readOnly
             />
           </ul>
