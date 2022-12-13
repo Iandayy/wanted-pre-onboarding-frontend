@@ -54,7 +54,7 @@ const TodoItem = ({ token, items }) => {
               readOnly
             />
           </ul>
-          <section>
+          <section className="flex">
             <Button str="Update" onClick={editHandler} className="mx-1" />
             <DeleteTodo id={items.id} />
           </section>
@@ -68,7 +68,7 @@ const TodoItem = ({ token, items }) => {
             setIsChecked={setIsChecked}
             editInputRef={editInputRef}
           />
-          <section>
+          <section className="flex">
             <Button str="Cancel" onClick={cancelHandler} className="mx-1" />
             <Button str="Complete" onClick={completeHandler} />
           </section>
