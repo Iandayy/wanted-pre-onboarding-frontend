@@ -8,7 +8,7 @@ const EditTodo = ({ items, setEditValue, setIsChecked, editInputRef }) => {
   };
 
   return (
-    <div className="flex w-full p-2">
+    <div className="flex justify-center items-center w-full p-2">
       <input
         id="todo"
         type="text"
