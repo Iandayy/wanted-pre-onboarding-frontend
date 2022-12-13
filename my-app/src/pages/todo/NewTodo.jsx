@@ -26,7 +26,6 @@ const NewTodo = ({ token }) => {
       await instance.post("/todos", item, {
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
         },
       });
       alert(`Add your '${todo}'`);

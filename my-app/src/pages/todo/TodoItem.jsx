@@ -34,7 +34,6 @@ const TodoItem = ({ token, items }) => {
     await instance.put(`/todos/${items.id}`, item, {
       headers: {
         Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
       },
     });
     alert(`Update your '${editValue}'`);
