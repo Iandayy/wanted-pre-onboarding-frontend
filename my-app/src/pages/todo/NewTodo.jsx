@@ -14,13 +14,13 @@ const NewTodo = ({ token }) => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const item = { todo };
-
     if (todo.length < 1) {
       todoInput.current.focus();
       alert("Please write at least 1 character.");
       return;
     }
+
+    const item = { todo };
 
     try {
       await instance.post("/todos", item, {

@@ -25,13 +25,11 @@ const Todos = () => {
       <NewTodo token={token} />
       {todos.length === 0 && <p>Please add todo.</p>}
       {todos.length > 0 && (
-        <>
-          <section className="flex flex-col-reverse justify-center itmes-center">
-            {todos.map((todo) => (
-              <TodoItem key={todo.id} token={token} items={todo} />
-            ))}
-          </section>
-        </>
+        <section className="flex flex-col-reverse justify-center itmes-center">
+          {todos.map((todo) => (
+            <TodoItem key={todo.id} token={token} items={todo} />
+          ))}
+        </section>
       )}
     </div>
   );
