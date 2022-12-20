@@ -46,13 +46,14 @@ const TodoItem = ({ token, items }) => {
       {!isEdit && (
         <>
           <ul className="flex sm:justify-center items-center p-2 w-3/4 lg:w-4/5">
-            <li className="mr-2 break-words">{items.todo}</li>
             <input
+              className="mr-2"
               name="isCompleted"
               type="checkbox"
               checked={items.isCompleted}
               readOnly
             />
+            <li className="break-all">{items.todo}</li>
           </ul>
           <section className="flex">
             <Button str="Update" onClick={editHandler} className="mx-1" />

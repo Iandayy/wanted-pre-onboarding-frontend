@@ -55,22 +55,18 @@ const useAuth = (props) => {
     try {
       const res = await instance.post(`${props.url}`, items);
       if (props.path === "signup") {
-        setInputValue({
-          email: "",
-          password: "",
-        });
         alert("Sign Up");
         window.location.replace("/signin");
       }
       if (props.path === "signin") {
-        setInputValue({
-          email: "",
-          password: "",
-        });
         window.localStorage.setItem("JWT", res.data.access_token);
         alert("Welcome to Todo List :)");
         window.location.replace("/todos");
       }
+      setInputValue({
+        email: "",
+        password: "",
+      });
     } catch (err) {
       console.log("err", err);
 
