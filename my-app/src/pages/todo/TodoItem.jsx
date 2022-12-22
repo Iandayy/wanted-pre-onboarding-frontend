@@ -23,13 +23,13 @@ const TodoItem = ({ token, items }) => {
   };
 
   const completeHandler = async () => {
-    const item = { todo: editValue, isCompleted: isChecked };
-
     if (editValue.length < 1) {
       editInputRef.current.focus();
       alert("Please write at least 1 character.");
       return;
     }
+
+    const item = { todo: editValue, isCompleted: isChecked };
 
     await instance.put(`/todos/${items.id}`, item, {
       headers: {
